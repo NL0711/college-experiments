@@ -1,6 +1,6 @@
-## To run
+# To run
 
-# DB Connection
+## DB Connection
 
 Create the schema in PostgreSQL
 ```sql
