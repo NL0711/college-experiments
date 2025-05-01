@@ -1,0 +1,3 @@
+[submodule "advanced-java/exp3-springboot/postit-photos"]
+	path = advanced-java/exp3-springboot/postit-photos
+	url = https://github.com/NL0711/postit-photos
