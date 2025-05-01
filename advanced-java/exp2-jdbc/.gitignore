@@ -1,0 +1,5 @@
+# Database credentials
+database.properties
+
+# Compiled Java class files
+*.class

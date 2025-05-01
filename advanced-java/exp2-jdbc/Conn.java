@@ -4,14 +4,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class Conn {
-    private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "43133";
-
     public Connection connect() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        Properties props = new Properties();
+        try (FileInputStream fis = new FileInputStream("database.properties")) {
+            props.load(fis);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException(e);
+        }
+
+        String url = props.getProperty("DB_URL");
+        String user = props.getProperty("DB_USER");
+        String password = props.getProperty("DB_PASSWORD");
+
+        return DriverManager.getConnection(url, user, password);
     }
 
     public ResultSet executeQuery(String query) throws SQLException {
